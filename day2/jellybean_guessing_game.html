@@ -12,6 +12,12 @@
                 border: solid;
             }
 
+            body {
+                background-image: url(https://i0.wp.com/rutheh.com/wp-content/uploads/2013/03/img_4544.jpg?ssl=1);
+                background-repeat: repeat;
+                background-size: cover;
+            }
+
             .gameBoardHeader {
                 width: 100%;
                 margin: 0 auto;
@@ -78,15 +84,15 @@
 
         <script>
             
-            
             var defaultStartBtnTxt = 'Start Game';
             var defaultResetBtnTxt = 'Reset Game';
             var btnTextToggle = true;
 
-            const playArea = document.querySelector(".playArea");
             var listItem1 = document.querySelector("#listItem1");
             var listItem2 = document.querySelector("#listItem2");
             var listItem3 = document.querySelector("#listItem3");
+            
+            const playArea = document.querySelector(".playArea");
 
             function buttonTextToggler() {
                 if(btnTextToggle) {
@@ -94,13 +100,14 @@
                     let minNum = grandpaAgeRandomNumber - 30;
                     let randomNumber = Math.floor(Math.random() * 1000) + minNum;
                     const jellybeanTotal = grandpaAgeRandomNumber + randomNumber;
-                    console.log(jellybeanTotal)
-
-                    document.querySelector('#strtBtn').value = defaultResetBtnTxt;
+                    console.log('Total Amout: ' +jellybeanTotal)
+                    
                     btnTextToggle = false;
+                    document.querySelector('#strtBtn').value = defaultResetBtnTxt;
+                    
                     playArea.style.visibility = "visible";
                     listItem1.innerHTML = 'Grandpa is ' + grandpaAgeRandomNumber;
-                    listItem2.innerHTML = 'There is at least ' + minNum + ' jellybeans in the jar';
+                    listItem2.innerHTML = 'Grandpa has at least ' + minNum + ' jellybeans in the jar';
                     listItem3.innerHTML = jellybeanTotal % 2 == 0 ? 'Total amount is an even number' : 'Total amount is an odd number'  
 
                 } else {
