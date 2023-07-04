@@ -57,13 +57,11 @@
             </div>
             <div class="gameInstructions">
                 <p>Since he was 30 years old, Grandpa has collected at least 1 jellybean each birthday! He has no teeth so he's more than ready to give them all away. 
-                    To them you must correctly guess the amount of jellybeans has he collected</p>
+                    To get them you must correctly guess the amount of jellybeans in Grandpa's jar.</p>
             </div>
             <input type="submit" id="strtBtn" onclick="buttonTextToggler()" value="Start Game" >
             <div class="playArea">
-            <p class="importantInstructions">
-                Helpful tips! 🔥🔥🔥
-            </p>
+            <p class="importantInstructions">3 Helpful tips! 🔥🔥🔥</p>
             <ul>
                 <li id="listItem1"></li>
                 <li id="listItem2"></li>
@@ -92,20 +90,24 @@
 
             function buttonTextToggler() {
                 if(btnTextToggle) {
-                    var grandpaAgeRandomNumber = Math.floor(Math.random() * 100) + 30;
-                    let randomNumber = Math.floor(Math.random() * 1000) + (grandpaAgeRandomNumber - 30);
+                    var grandpaAgeRandomNumber = Math.floor(Math.random() * 100) + 50;
+                    let minNum = grandpaAgeRandomNumber - 30;
+                    let randomNumber = Math.floor(Math.random() * 1000) + minNum;
                     const jellybeanTotal = grandpaAgeRandomNumber + randomNumber;
+                    console.log(jellybeanTotal)
+
                     document.querySelector('#strtBtn').value = defaultResetBtnTxt;
                     btnTextToggle = false;
                     playArea.style.visibility = "visible";
                     listItem1.innerHTML = 'Grandpa is ' + grandpaAgeRandomNumber;
-                    // listItem2.innerHTML = hint1(jellybeanTotal);
-                    // listItem3.innerHTML = hint2(jellybeanTotal);
+                    listItem2.innerHTML = 'There is at least ' + minNum + ' jellybeans in the jar';
+                    listItem3.innerHTML = jellybeanTotal % 2 == 0 ? 'Total amount is an even number' : 'Total amount is an odd number'  
 
                 } else {
                     document.querySelector('#strtBtn').value = defaultStartBtnTxt;
                     btnTextToggle = true;
                     playArea.style.visibility = "hidden";
+                    listItem1.innerHTML = '';
                 }
             }
 
